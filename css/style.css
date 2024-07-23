@@ -1,0 +1,678 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Noto+Sans+Display:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* Start Global Rules */
+:root {
+  --main-color: rgb(0, 149, 175);
+  --main-color-light: rgb(0, 178, 209);
+  --secondary-color: rgb(255, 20, 20);
+  --secondary-color-light: rgb(255, 44, 44);
+  --dropdown-border-radius: 6px;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Cairo", sans-serif;
+}
+html {
+  direction: rtl;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+/* End Global Rules */
+
+/* Start Page Title */
+header {
+  padding: 0.5rem 0;
+  background: linear-gradient(to right, #febbbb, #9696ff);
+}
+header .logo-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+header .logo-title-wrapper .logo img {
+  width: 4rem;
+}
+header .logo-title-wrapper .title {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  color: #444;
+  font-weight: 500;
+}
+/* End Page Title */
+
+/* Start Navbar */
+nav {
+  background-color: #eee;
+  text-align: center;
+  border-bottom: 1px solid #888;
+}
+nav ul {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+nav ul li a {
+  display: block;
+  padding: 0.5rem 2rem;
+  color: var(--main-color);
+  position: relative;
+  transition: color 0.3s ease;
+}
+nav ul li a i {
+  display: inline-block;
+  margin-left: 3px;
+}
+nav ul.main-menu > li:last-child {
+  border-left: 1px solid #ddd;
+}
+nav ul.main-menu > li {
+  border-right: 1px solid #ddd;
+}
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--main-color);
+  transition: width 0.3s ease;
+}
+nav ul li a:hover {
+  color: var(--main-color-light);
+}
+nav ul li a:hover::after {
+  width: 100%;
+}
+nav ul li.has-dropdown {
+  position: relative;
+}
+nav ul li.has-dropdown:hover > ul.dropdown {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  top: calc(100%);
+}
+nav ul li.has-dropdown > ul.dropdown {
+  position: absolute;
+  top: calc(100% + 2rem);
+  right: 0;
+  padding-top: 0.75rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+nav ul li.has-dropdown > ul.dropdown::before {
+  content: "";
+  position: absolute;
+  top: -0.75rem;
+  right: 2rem;
+  width: 0;
+  height: 0;
+  border-width: 0.75rem;
+  border-style: solid;
+  border-color: transparent transparent #e8e8e8 transparent;
+}
+nav ul li.has-dropdown > ul li {
+  background-color: #e8e8e8;
+  overflow: hidden;
+}
+nav ul li.has-dropdown > ul li:first-child {
+  border-radius: var(--dropdown-border-radius) var(--dropdown-border-radius) 0 0;
+}
+nav ul li.has-dropdown > ul li:last-child {
+  border-radius: 0 0 var(--dropdown-border-radius) var(--dropdown-border-radius);
+}
+nav ul li.has-dropdown > ul li:not(:last-child) {
+  border-bottom: 1px solid #ddd;
+}
+nav ul li.has-dropdown > ul li a {
+  padding: 0.75rem 1rem;
+  display: block;
+  min-width: 250px;
+  text-align: right;
+}
+nav ul li.has-dropdown > ul li a span {
+  margin-right: 0.25rem;
+  transition: padding 0.3s ease;
+}
+nav ul li.has-dropdown > ul li a:hover span {
+  padding-right: 0.5rem;
+}
+/* End Navbar */
+
+/* Start Register Form */
+.login-wrapper,
+.order-wrapper,
+.register-wrapper,
+.update-wrapper,
+.manage-wrapper {
+  position: relative;
+}
+.login-wrapper::before,
+.order-wrapper::before,
+.register-wrapper::before,
+.update-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(3px);
+  z-index: 1;
+}
+.login-wrapper::before {
+  background: url(../images/management1.jpg);
+  background-size: cover;
+}
+.order-wrapper::before {
+  background: url(../images/order2.webp);
+  background-size: cover;
+}
+.order-wrapper,
+.login-wrapper,
+.register-wrapper,
+.update-wrapper {
+  padding: 2rem 0;
+  min-height: calc(100vh - (47px + 77px));
+}
+.order-wrapper form,
+.login-wrapper form,
+.register-wrapper form,
+.update-wrapper form {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 584px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2rem 4rem;
+  position: relative;
+  z-index: 2;
+  background-color: #fff;
+}
+.order-wrapper form .form-group,
+.login-wrapper form .form-group,
+.register-wrapper form .form-group,
+.update-wrapper form .form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.order-wrapper form .form-group.btns-wrapper,
+.login-wrapper form .form-group.btns-wrapper,
+.register-wrapper form .form-group.btns-wrapper,
+.update-wrapper form .form-group.btns-wrapper {
+  margin-top: 3rem;
+  margin-bottom: 0;
+  justify-content: space-between;
+}
+.order-wrapper form .form-group.btns-wrapper .btn,
+.login-wrapper form .form-group.btns-wrapper .btn,
+.register-wrapper form .form-group.btns-wrapper .btn,
+.update-wrapper form .form-group.btns-wrapper .btn {
+  padding: 0.25rem 0.5rem;
+  min-width: 150px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+.order-wrapper form .form-group.btns-wrapper .btn.register,
+.login-wrapper form .form-group.btns-wrapper .btn.login,
+.register-wrapper form .form-group.btns-wrapper .btn.register,
+.update-wrapper form .form-group.btns-wrapper .btn.update {
+  background-color: var(--main-color-light);
+  border: 1px solid aqua;
+}
+.order-wrapper form .form-group.btns-wrapper .btn.register:hover,
+.login-wrapper form .form-group.btns-wrapper .btn.login:hover,
+.register-wrapper form .form-group.btns-wrapper .btn.register:hover,
+.update-wrapper form .form-group.btns-wrapper .btn.update:hover {
+  background-color: var(--main-color);
+}
+
+.order-wrapper form .form-group.btns-wrapper .btn.reset,
+.login-wrapper form .form-group.btns-wrapper .btn.reset,
+.register-wrapper form .form-group.btns-wrapper .btn.reset,
+.update-wrapper form .form-group.btns-wrapper .btn.reset {
+  background-color: var(--secondary-color-light);
+  border: 1px solid red;
+}
+.order-wrapper form .form-group.btns-wrapper .btn.reset:hover,
+.login-wrapper form .form-group.btns-wrapper .btn.reset:hover,
+.register-wrapper form .form-group.btns-wrapper .btn.reset:hover,
+.update-wrapper form .form-group.btns-wrapper .btn.reset:hover {
+  background-color: var(--secondary-color);
+}
+.order-wrapper form .form-group.btns-wrapper .btn:disabled,
+.login-wrapper form .form-group.btns-wrapper .btn:disabled,
+.register-wrapper form .form-group.btns-wrapper .btn:disabled,
+.update-wrapper form .form-group.btns-wrapper .btn:disabled,
+.order-wrapper form .form-group.btns-wrapper .btn:disabled:hover,
+.login-wrapper form .form-group.btns-wrapper .btn:disabled:hover,
+.register-wrapper form .form-group.btns-wrapper .btn:disabled:hover,
+.update-wrapper form .form-group.btns-wrapper .btn:disabled:hover {
+  color: #888;
+  background-color: #ddd;
+  border-color: transparent;
+  cursor: not-allowed;
+}
+.order-wrapper form .form-group.btns-wrapper .btn i,
+.login-wrapper form .form-group.btns-wrapper .btn i,
+.register-wrapper form .form-group.btns-wrapper .btn i,
+.update-wrapper form .form-group.btns-wrapper .btn i {
+  display: inline-block;
+  margin-left: 5px;
+}
+.order-wrapper form .form-group label,
+.login-wrapper form .form-group label,
+.register-wrapper form .form-group label,
+.update-wrapper form .form-group label {
+  user-select: none;
+  display: inline-block;
+  margin-bottom: 5px;
+  color: #222;
+  font-size: 14px;
+  min-width: 180px;
+  cursor: pointer;
+}
+.order-wrapper form .form-group label i,
+.login-wrapper form .form-group label i,
+.register-wrapper form .form-group label i,
+.update-wrapper form .form-group label i {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.order-wrapper form .form-group .form-control-wrapper,
+.login-wrapper form .form-group .form-control-wrapper,
+.register-wrapper form .form-group .form-control-wrapper,
+.update-wrapper form .form-group .form-control-wrapper {
+  width: 100%;
+  position: relative;
+}
+.order-wrapper form .form-group input,
+.login-wrapper form .form-group input,
+.register-wrapper form .form-group input,
+.update-wrapper form .form-group input {
+  border: none;
+  outline: none;
+  background-color: #eee;
+  padding: 0.5rem;
+  width: 100%;
+  color: #444;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+.order-wrapper form .form-group input:focus,
+.login-wrapper form .form-group input:focus,
+.register-wrapper form .form-group input:focus,
+.update-wrapper form .form-group input:focus,
+.order-wrapper form .form-group select:focus,
+.login-wrapper form .form-group select:focus,
+.register-wrapper form .form-group select:focus,
+.update-wrapper form .form-group select:focus {
+  background-color: #f2f2f2;
+}
+.order-wrapper form .form-group .fill,
+.login-wrapper form .form-group .fill,
+.register-wrapper form .form-group .fill,
+.update-wrapper form .form-group .fill {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background-color: var(--main-color);
+  opacity: 0.5;
+  transition: all 0.2s ease;
+}
+.order-wrapper form .form-group input:focus + .fill,
+.login-wrapper form .form-group input:focus + .fill,
+.register-wrapper form .form-group input:focus + .fill,
+.update-wrapper form .form-group input:focus + .fill {
+  width: 100%;
+  opacity: 1;
+}
+.order-wrapper form .form-control.fullname_eng,
+.order-wrapper form .form-control.year,
+.order-wrapper form .form-control.phone {
+  direction: ltr;
+}
+
+.order-wrapper form .form-control.year {
+  width: 100%;
+  outline: none;
+  border: none;
+  height: 46px;
+  padding: 0 1rem;
+  cursor: pointer;
+  font-size: 14px;
+}
+.order-wrapper form .form-control.year option {
+  padding: 1rem;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+/* End Register Form */
+
+/* Start Sweet Alert */
+.swal-title {
+  font-size: 18px !important;
+}
+.swal-content .errors {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.swal-content .errors .error-item {
+  background-color: rgb(255, 195, 195);
+  border-radius: 5px;
+}
+.swal-content .errors .error-item .error-text {
+  padding: 0.5rem 0;
+  color: rgb(255, 0, 0);
+}
+.swal-footer {
+  text-align: center;
+}
+.swal-footer .swal-button {
+  font-size: 1rem;
+  padding: 4px 24px;
+}
+.swal-footer .swal-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+/* End Sweet Alert */
+
+/* Start Management Page */
+.manage-wrapper {
+  padding-top: 2rem;
+  min-height: calc(100vh - (47px + 77px));
+}
+.manage-wrapper .account-control-wrapper {
+}
+.manage-wrapper .account-control-wrapper .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.manage-wrapper .account-control-wrapper a {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+.manage-wrapper .account-control-wrapper a.account-edit {
+  color: var(--main-color-light);
+}
+.manage-wrapper .account-control-wrapper a.account-delete,
+.account-control-wrapper a.account-logout {
+  color: var(--secondary-color);
+}
+.manage-wrapper .account-control-wrapper a:hover {
+  color: var(--main-color);
+}
+.items-table-wrapper {
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+/* End Management Page */
+
+/* Start Math Page */
+.department-wrapper {
+  padding-top: 2rem;
+}
+.department-wrapper .container {
+  background-color: #fff;
+  padding: 2rem;
+}
+.department-wrapper .tabs {
+  display: flex;
+  border: 1px solid #eee;
+  flex-wrap: wrap;
+}
+.department-wrapper .tabs .tab {
+  color: #777;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0.25rem 1rem;
+  border: 1px solid #eee;
+  user-select: none;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+.department-wrapper .tabs .tab.active {
+  background-color: #f1f1f1;
+  color: var(--main-color);
+  border-bottom-color: var(--main-color);
+}
+.department-wrapper .tabs .tab:hover {
+  color: var(--main-color);
+  border-bottom-color: var(--main-color);
+}
+.department-wrapper .contents .content {
+  padding: 2rem 0;
+  display: none;
+}
+.job-wrapper .contents,
+.home-wrapper .contents {
+  padding: 1rem 0;
+}
+.job-wrapper,
+.home-wrapper,
+.computer-wrapper,
+.math-wrapper,
+.it-wrapper {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.3);
+  min-height: calc(100vh - (93px + 47px));
+}
+.job-wrapper::before,
+.home-wrapper::before,
+.computer-wrapper::before,
+.math-wrapper::before,
+.it-wrapper::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh);
+  filter: blur(4px);
+  z-index: -1;
+}
+.job-wrapper::before {
+  background-image: url("../images/jobs1.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.home-wrapper::before {
+  background-image: url("../images/home1.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.computer-wrapper::before {
+  background-image: url("../images/computer.webp");
+  background-size: cover;
+  background-position: bottom center;
+}
+.math-wrapper::before {
+  background-image: url("../images/math3.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.it-wrapper::before {
+  background-image: url("../images/it2.jpg");
+  background-size: cover;
+  background-position: bottom center;
+}
+.job-wrapper .container,
+.home-wrapper .container,
+.computer-wrapper .container,
+.map-wrapper .container,
+.it-wrapper .container {
+  position: relative;
+  z-index: 2;
+}
+.job-wrapper,
+.home-wrapper {
+  padding-top: 2rem;
+}
+.job-wrapper .container,
+.home-wrapper .container {
+  background-color: #fff;
+  padding: 2rem;
+}
+.department-wrapper .contents .content .content-title,
+.job-wrapper .content-title,
+.home-wrapper .content-title {
+  color: #000;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid var(--main-color);
+}
+.department-wrapper .contents .content.active {
+  display: block;
+}
+.department-wrapper .contents .content section,
+.job-wrapper .contents .content,
+.home-wrapper .contents .content {
+  padding: 1rem 0;
+}
+.department-wrapper .contents .content section:not(:last-child),
+.job-wrapper .contents .content:not(:last-child),
+.home-wrapper .contents .content:not(:last-child) {
+  border-bottom: 2px dotted #aaa;
+}
+.home-wrapper .contents .content .part:not(:last-child) {
+  margin-bottom: 1.25rem;
+}
+.home-wrapper .contents .content .part-title {
+  font-weight: 600;
+}
+.home-wrapper .contents .content ul,
+.home-wrapper .contents .content ol {
+  padding-right: 1rem;
+  color: #444;
+}
+.home-wrapper .contents .content ul {
+  list-style-type: disc;
+}
+.home-wrapper .contents .content ol {
+  list-style: decimal;
+}
+.department-wrapper .contents .content section .title {
+  color: var(--main-color);
+}
+.job-wrapper .contents .content .title a {
+  color: #00f;
+  transition: all 0.2s ease;
+}
+.job-wrapper .contents .content .title a:hover {
+  color: var(--main-color);
+}
+.department-wrapper .contents .content section p,
+.department-wrapper .contents .content section .description,
+.job-wrapper .contents .content,
+.home-wrapper .contents .content {
+  color: #000;
+}
+.department-wrapper .contents .content section .description,
+.job-wrapper .contents .content .description,
+.home-wrapper .contents .content .description {
+  text-indent: 2.5rem;
+}
+.department-wrapper .contents .content section a {
+  color: var(--main-color);
+  transition: 0.2s ease;
+}
+.department-wrapper .contents .content section a:hover {
+  color: #00f;
+}
+/* End Math Page */
+
+/* Start Contact Us Page */
+.contact-wrapper {
+  padding: 2rem 0;
+}
+.contact-wrapper .info-wrapper {
+  margin-bottom: 2rem;
+  color: #222;
+}
+.contact-wrapper .info-wrapper a {
+  color: #00f;
+  transition: all 0.2s ease;
+}
+.contact-wrapper .info-wrapper a:hover {
+  color: var(--main-color);
+}
+.contact-wrapper .map-wrapper iframe {
+  width: 100%;
+}
+/* End Contact Us Page */
+
+@media (max-width: 575px) {
+  .container {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 576px) {
+  .container {
+    width: 540px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 720px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 960px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1120px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
